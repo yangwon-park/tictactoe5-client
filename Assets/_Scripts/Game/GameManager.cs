@@ -29,6 +29,8 @@ namespace _Scripts.Game
             var confirmPanel = Instantiate(confirmPanelPrefab, _canvas.transform);
             
             confirmPanel.GetComponent<ConfirmPanelController>().ActivePanel(message);
+            
+            
         }
 
         protected override void OnSceneLoad(Scene scene, LoadSceneMode mode)
