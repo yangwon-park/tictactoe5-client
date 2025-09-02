@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Scripts
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : Singleton<GameManager>
     {
         void Start()
         {
@@ -12,6 +13,11 @@ namespace _Scripts
         void Update()
         {
         
+        }
+
+        protected override void OnSceneLoad(Scene scene, LoadSceneMode mode)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
