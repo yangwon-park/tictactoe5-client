@@ -1,6 +1,7 @@
+using _Scripts.Game;
 using UnityEngine;
 
-namespace _Scripts
+namespace _Scripts.Main
 {
     public class MainPanelController : MonoBehaviour
     {

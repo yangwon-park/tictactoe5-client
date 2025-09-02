@@ -1,4 +1,4 @@
-namespace _Scripts
+namespace _Scripts.Game
 {
     public class Constant
     {

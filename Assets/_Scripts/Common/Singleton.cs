@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace _Scripts
+namespace _Scripts.Common
 {
     public abstract class Singleton<T> : MonoBehaviour where T : Component
     {
