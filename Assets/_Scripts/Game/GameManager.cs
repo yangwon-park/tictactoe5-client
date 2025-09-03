@@ -22,13 +22,13 @@ namespace _Scripts.Game
             SceneManager.LoadScene("Main");
         }
         
-        public void OpenConfirmPanel(string message)
+        public void OpenConfirmPanel(string message, ConfirmPanelController.OnConfirmButonCLicked onConfirmButonCLicked)
         {
             if (_canvas == null) return;
             
             var confirmPanel = Instantiate(confirmPanelPrefab, _canvas.transform);
             
-            confirmPanel.GetComponent<ConfirmPanelController>().ActivePanel(message);
+            confirmPanel.GetComponent<ConfirmPanelController>().ActivePanel(message, onConfirmButonCLicked);
             
             
         }

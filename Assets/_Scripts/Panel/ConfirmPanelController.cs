@@ -7,9 +7,14 @@ namespace _Scripts.Panel
     {
         [SerializeField] private TMP_Text messageText;
         
-        public void ActivePanel(string message)
+        public delegate void OnConfirmButonCLicked();
+        private OnConfirmButonCLicked _onConfirmButonCLicked;
+        
+        public void ActivePanel(string message, OnConfirmButonCLicked onConfirmButonCLicked)
+        
         {
             messageText.text = message;
+            _onConfirmButonCLicked = onConfirmButonCLicked;
             base.ActivePanel();
         }
         
@@ -20,7 +25,10 @@ namespace _Scripts.Panel
         
         public void OnClickCloseButton()
         {
-            base.DeActivePanel();
+            base.DeActivePanel(() =>
+            {
+                _onConfirmButonCLicked?.Invoke();
+            });
         }
     }
 }

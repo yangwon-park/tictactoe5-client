@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,6 +10,8 @@ namespace _Scripts.Panel
         [SerializeField] private RectTransform panelRectTransform;
         
         private CanvasGroup _backgroundCanvasGroup;
+        
+        public delegate void PanelControllerHideDelegate();
 
         private void Awake()
         {
@@ -26,13 +27,18 @@ namespace _Scripts.Panel
             panelRectTransform.DOScale(1, 0.3f).SetEase(Ease.OutBack);
         }
 
-        protected void DeActivePanel()
+        protected void DeActivePanel(PanelControllerHideDelegate hideDelegate = null)
         {
             _backgroundCanvasGroup.alpha = 1;
             panelRectTransform.localScale = Vector3.one;
 
             _backgroundCanvasGroup.DOFade(0, 0.3f).SetEase(Ease.Linear);
-            panelRectTransform.DOScale(0, 0.3f).SetEase(Ease.InBack);
+            panelRectTransform.DOScale(0, 0.3f).SetEase(Ease.InBack)
+                .OnComplete(() =>
+                {
+                    hideDelegate?.Invoke();
+                    Destroy(gameObject);
+                });
         }
     }
 }
